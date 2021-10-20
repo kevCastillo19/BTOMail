@@ -74,7 +74,19 @@ public class CorreoService implements ICorreoService {
 
 		for (TblCorreo ent : lista) {
 
-			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(), ent.isCategoria(), ent.isLeido(), ent.isDestacado(), ent.isEliminado(), ent.isSpam(), ent.getCorreoReceptor());
+			Correo correo = new Correo();
+			correo.setIdCorreo(ent.getIdCorreo());
+			correo.setNombreEmisor(ent.getNombreEmisor());
+			correo.setCorreoEmisor(ent.getCorreoEmisor());
+			correo.setFecha(ent.getFecha());
+			correo.setAsunto(ent.getAsunto());
+			correo.setMensaje(ent.getMensaje());
+			correo.setCategoria(ent.isCategoria());
+			correo.setLeido(ent.isLeido());
+			correo.setDestacado(ent.isDestacado());
+			correo.setEliminado(ent.isEliminado());
+			correo.setSpam(ent.isSpam());
+			correo.setCorreoReceptor(ent.getCorreoReceptor());
 
 			listadoCorreos.add(correo);
 		}

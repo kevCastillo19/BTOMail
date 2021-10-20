@@ -1,9 +1,9 @@
 package com.btomail.app.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Correo {
-	private int IdCorreo; 
+	private Integer IdCorreo; 
 	private String NombreEmisor;
 	private String CorreoEmisor;
 	private Date Fecha;
@@ -20,18 +20,18 @@ public class Correo {
 			boolean categoria, boolean leido, boolean destacado, boolean eliminado, boolean spam,
 			String correoReceptor) {
 		super();
-		IdCorreo = idCorreo;
-		NombreEmisor = nombreEmisor;
-		CorreoEmisor = correoEmisor;
-		Fecha = fecha;
-		Asunto = asunto;
-		Mensaje = mensaje;
-		Categoria = categoria;
-		Leido = leido;
-		Destacado = destacado;
-		Eliminado = eliminado;
-		Spam = spam;
-		CorreoReceptor = correoReceptor;
+		this.IdCorreo = idCorreo;
+		this.NombreEmisor = nombreEmisor;
+		this.CorreoEmisor = correoEmisor;
+		this.Fecha = fecha;
+		this.Asunto = asunto;
+		this.Mensaje = mensaje;
+		this.Categoria = categoria;
+		this.Leido = leido;
+		this.Destacado = destacado;
+		this.Eliminado = eliminado;
+		this.Spam = spam;
+		this.CorreoReceptor = correoReceptor;
 	}
 
 	public Correo() {}
@@ -41,7 +41,7 @@ public class Correo {
 	}
 
 	public void setIdCorreo(Integer idCorreo) {
-		IdCorreo = idCorreo;
+		this.IdCorreo = idCorreo;
 	}
 
 	public String getNombreEmisor() {
@@ -49,7 +49,7 @@ public class Correo {
 	}
 
 	public void setNombreEmisor(String nombreEmisor) {
-		NombreEmisor = nombreEmisor;
+		this.NombreEmisor = nombreEmisor;
 	}
 
 	public String getCorreoEmisor() {
@@ -57,7 +57,7 @@ public class Correo {
 	}
 
 	public void setCorreoEmisor(String correoEmisor) {
-		CorreoEmisor = correoEmisor;
+		this.CorreoEmisor = correoEmisor;
 	}
 
 	public Date getFecha() {
@@ -65,7 +65,7 @@ public class Correo {
 	}
 
 	public void setFecha(Date fecha) {
-		Fecha = fecha;
+		this.Fecha = fecha;
 	}
 
 	public String getAsunto() {
@@ -73,7 +73,7 @@ public class Correo {
 	}
 
 	public void setAsunto(String asunto) {
-		Asunto = asunto;
+		this.Asunto = asunto;
 	}
 
 	public String getMensaje() {
@@ -81,7 +81,7 @@ public class Correo {
 	}
 
 	public void setMensaje(String mensaje) {
-		Mensaje = mensaje;
+		this.Mensaje = mensaje;
 	}
 
 	public boolean isCategoria() {
@@ -89,7 +89,7 @@ public class Correo {
 	}
 
 	public void setCategoria(boolean categoria) {
-		Categoria = categoria;
+		this.Categoria = categoria;
 	}
 
 	public boolean isLeido() {
@@ -97,7 +97,7 @@ public class Correo {
 	}
 
 	public void setLeido(boolean leido) {
-		Leido = leido;
+		this.Leido = leido;
 	}
 
 	public boolean isDestacado() {
@@ -105,7 +105,7 @@ public class Correo {
 	}
 
 	public void setDestacado(boolean destacado) {
-		Destacado = destacado;
+		this.Destacado = destacado;
 	}
 
 	public boolean isEliminado() {
@@ -113,7 +113,7 @@ public class Correo {
 	}
 
 	public void setEliminado(boolean eliminado) {
-		Eliminado = eliminado;
+		this.Eliminado = eliminado;
 	}
 
 	public boolean isSpam() {
@@ -121,7 +121,7 @@ public class Correo {
 	}
 
 	public void setSpam(boolean spam) {
-		Spam = spam;
+		this.Spam = spam;
 	}
 
 	public String getCorreoReceptor() {
@@ -129,7 +129,7 @@ public class Correo {
 	}
 
 	public void setCorreoReceptor(String correoReceptor) {
-		CorreoReceptor = correoReceptor;
+		this.CorreoReceptor = correoReceptor;
 	}
 	
 	
