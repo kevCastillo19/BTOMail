@@ -7,5 +7,4 @@ import com.btomail.app.entity.TblCorreo;
 
 @Repository
 public interface ICorreoRepository extends JpaRepository<TblCorreo, Integer> {
-	
 }

@@ -22,131 +22,113 @@ public class TblCorreo {
 	@Column(name="Mensaje", nullable=false)
 	private String Mensaje;
 	@Column(name="Categoria", nullable=false)
-	private boolean Categoria;
+	private Boolean Categoria;
 	@Column(name="Leido", nullable=false)
-	private boolean Leido;
+	private Boolean Leido;
 	@Column(name="Destacado", nullable=false)
-	private boolean Destacado;
+	private Boolean Destacado;
 	@Column(name="Eliminado", nullable=false)
-	private boolean Eliminado;
+	private Boolean Eliminado;
 	@Column(name="Spam", nullable=false)
-	private boolean Spam;
+	private Boolean Spam;
 	@Column(name="CorreoReceptor", nullable=false)
 	private String CorreoReceptor;
-	
 	public TblCorreo(Integer idCorreo, String nombreEmisor, String correoEmisor, Date fecha, String asunto,
-			String mensaje, boolean categoria, boolean leido, boolean destacado, boolean eliminado, boolean spam,
+			String mensaje, Boolean categoria, Boolean leido, Boolean destacado, Boolean eliminado, Boolean spam,
 			String correoReceptor) {
 		super();
-		this.IdCorreo = idCorreo;
-		this.NombreEmisor = nombreEmisor;
-		this.CorreoEmisor = correoEmisor;
-		this.Fecha = fecha;
-		this.Asunto = asunto;
-		this.Mensaje = mensaje;
-		this.Categoria = categoria;
-		this.Leido = leido;
-		this.Destacado = destacado;
-		this.Eliminado = eliminado;
-		this.Spam = spam;
-		this.CorreoReceptor = correoReceptor;
+		IdCorreo = idCorreo;
+		NombreEmisor = nombreEmisor;
+		CorreoEmisor = correoEmisor;
+		Fecha = fecha;
+		Asunto = asunto;
+		Mensaje = mensaje;
+		Categoria = categoria;
+		Leido = leido;
+		Destacado = destacado;
+		Eliminado = eliminado;
+		Spam = spam;
+		CorreoReceptor = correoReceptor;
+	}
+	
+	
+	public TblCorreo() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public TblCorreo() {}
 
 	public Integer getIdCorreo() {
 		return IdCorreo;
 	}
-
 	public void setIdCorreo(Integer idCorreo) {
-		this.IdCorreo = idCorreo;
+		IdCorreo = idCorreo;
 	}
-
 	public String getNombreEmisor() {
 		return NombreEmisor;
 	}
-
 	public void setNombreEmisor(String nombreEmisor) {
-		this.NombreEmisor = nombreEmisor;
+		NombreEmisor = nombreEmisor;
 	}
-
 	public String getCorreoEmisor() {
 		return CorreoEmisor;
 	}
-
 	public void setCorreoEmisor(String correoEmisor) {
-		this.CorreoEmisor = correoEmisor;
+		CorreoEmisor = correoEmisor;
 	}
-
 	public Date getFecha() {
 		return Fecha;
 	}
-
 	public void setFecha(Date fecha) {
-		this.Fecha = fecha;
+		Fecha = fecha;
 	}
-
 	public String getAsunto() {
 		return Asunto;
 	}
-
 	public void setAsunto(String asunto) {
-		this.Asunto = asunto;
+		Asunto = asunto;
 	}
-
 	public String getMensaje() {
 		return Mensaje;
 	}
-
 	public void setMensaje(String mensaje) {
-		this.Mensaje = mensaje;
+		Mensaje = mensaje;
 	}
-
-	public boolean isCategoria() {
+	public Boolean getCategoria() {
 		return Categoria;
 	}
-
-	public void setCategoria(boolean categoria) {
-		this.Categoria = categoria;
+	public void setCategoria(Boolean categoria) {
+		Categoria = categoria;
 	}
-
-	public boolean isLeido() {
+	public Boolean getLeido() {
 		return Leido;
 	}
-
-	public void setLeido(boolean leido) {
-		this.Leido = leido;
+	public void setLeido(Boolean leido) {
+		Leido = leido;
 	}
-
-	public boolean isDestacado() {
+	public Boolean getDestacado() {
 		return Destacado;
 	}
-
-	public void setDestacado(boolean destacado) {
-		this.Destacado = destacado;
+	public void setDestacado(Boolean destacado) {
+		Destacado = destacado;
 	}
-
-	public boolean isEliminado() {
+	public Boolean getEliminado() {
 		return Eliminado;
 	}
-
-	public void setEliminado(boolean eliminado) {
-		this.Eliminado = eliminado;
+	public void setEliminado(Boolean eliminado) {
+		Eliminado = eliminado;
 	}
-
-	public boolean isSpam() {
+	public Boolean getSpam() {
 		return Spam;
 	}
-
-	public void setSpam(boolean spam) {
-		this.Spam = spam;
+	public void setSpam(Boolean spam) {
+		Spam = spam;
 	}
-
 	public String getCorreoReceptor() {
 		return CorreoReceptor;
 	}
-
 	public void setCorreoReceptor(String correoReceptor) {
-		this.CorreoReceptor = correoReceptor;
+		CorreoReceptor = correoReceptor;
 	}
+	
 }

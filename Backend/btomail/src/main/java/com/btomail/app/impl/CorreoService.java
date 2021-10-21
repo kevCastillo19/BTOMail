@@ -26,45 +26,56 @@ public class CorreoService implements ICorreoService {
 	}
 
 	@Override
-	public List<Correo> findByCategoria(boolean Categoria) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Correo> findByCategoria(Boolean Categoria) {
+		List<TblCorreo> listaCompleta = correoRepository.findAll();
+		List<Correo> lista = entityListToCategoria(Categoria, listaCompleta);
+		
+		return lista;
 	}
 
 	@Override
-	public List<Correo> findByDestacado(boolean Destacado) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Correo> findByDestacado(Boolean Destacado) {
+		List<TblCorreo> listaCompleta = correoRepository.findAll();
+		List<Correo> lista = entityListToDestacado(Destacado, listaCompleta);
+		
+		return lista;
 	}
 
 	@Override
-	public List<Correo> findBySpam(boolean Spam) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Correo> findBySpam(Boolean Spam) {
+		List<TblCorreo> listaCompleta = correoRepository.findAll();
+		List<Correo> lista = entityListToSpam(Spam, listaCompleta);
+		
+		return lista;
 	}
 
 	@Override
-	public List<Correo> findByEliminado(boolean Eliminado) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Correo> findByEliminado(Boolean Eliminado) {
+		List<TblCorreo> listaCompleta = correoRepository.findAll();
+		List<Correo> lista = entityListToEliminado(Eliminado, listaCompleta);
+		
+		return lista;
 	}
 
 	@Override
-	public CorreoResponse save(Correo Correo) {
-		// TODO Auto-generated method stub
-		return null;
+	public CorreoResponse save(Correo correo) {
+		CorreoResponse response = new CorreoResponse(); 
+		TblCorreo newCorreo = new TblCorreo(correo.getIdCorreo(), correo.getNombreEmisor(), correo.getCorreoEmisor(), correo.getFecha(), correo.getAsunto(), 
+											correo.getMensaje(), correo.getCategoria(), correo.getLeido(), correo.getDestacado(), correo.getEliminado(), 
+											correo.getSpam(), correo.getCorreoReceptor());
+		newCorreo = correoRepository.save(newCorreo);
+		
+		response.setCodigoRespuesta(0);
+		response.setMensajeRespuesta("Se agrego Correctamente");
+		
+		return response;
 	}
 
 	@Override
-	public CorreoResponse update(Correo Correo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public CorreoResponse update(Correo correo) {
+		CorreoResponse response = new CorreoResponse();
 	
-	@Override
-	public CorreoResponse delete(Integer IdCorreo) {
-		// TODO Auto-generated method stub
-		return null;
+		return response;
 	}
 	
 	//Metodos 
@@ -74,23 +85,71 @@ public class CorreoService implements ICorreoService {
 
 		for (TblCorreo ent : lista) {
 
-			Correo correo = new Correo();
-			correo.setIdCorreo(ent.getIdCorreo());
-			correo.setNombreEmisor(ent.getNombreEmisor());
-			correo.setCorreoEmisor(ent.getCorreoEmisor());
-			correo.setFecha(ent.getFecha());
-			correo.setAsunto(ent.getAsunto());
-			correo.setMensaje(ent.getMensaje());
-			correo.setCategoria(ent.isCategoria());
-			correo.setLeido(ent.isLeido());
-			correo.setDestacado(ent.isDestacado());
-			correo.setEliminado(ent.isEliminado());
-			correo.setSpam(ent.isSpam());
-			correo.setCorreoReceptor(ent.getCorreoReceptor());
-
+			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
+										ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
 			listadoCorreos.add(correo);
 		}
 
+		return listadoCorreos;
+	}
+	
+	private List<Correo> entityListToCategoria(Boolean categoria, List<TblCorreo> lista) {
+		List<Correo> listadoCorreos =  new ArrayList<>();
+		
+		for(TblCorreo ent: lista) {
+			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
+					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
+			
+			if(correo.getCategoria().equals(categoria)) {
+				listadoCorreos.add(correo);
+			}
+		}
+		
+		return listadoCorreos;
+	}
+	
+	private List<Correo> entityListToDestacado(Boolean destacado, List<TblCorreo> lista) {
+		List<Correo> listadoCorreos =  new ArrayList<>();
+		
+		for(TblCorreo ent: lista) {
+			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
+					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
+			
+			if(correo.getDestacado().equals(destacado)) {
+				listadoCorreos.add(correo);
+			}
+		}
+		
+		return listadoCorreos;
+	}
+	
+	private List<Correo> entityListToSpam(Boolean spam, List<TblCorreo> lista) {
+		List<Correo> listadoCorreos =  new ArrayList<>();
+		
+		for(TblCorreo ent: lista) {
+			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
+					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
+			
+			if(correo.getSpam().equals(spam)) {
+				listadoCorreos.add(correo);
+			}
+		}
+		
+		return listadoCorreos;
+	}
+	
+	private List<Correo> entityListToEliminado(Boolean eliminado, List<TblCorreo> lista) {
+List<Correo> listadoCorreos =  new ArrayList<>();
+		
+		for(TblCorreo ent: lista) {
+			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
+					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
+			
+			if(correo.getEliminado().equals(eliminado)) {
+				listadoCorreos.add(correo);
+			}
+		}
+		
 		return listadoCorreos;
 	}
 
