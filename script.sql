@@ -13,23 +13,21 @@ Leido tinyint,
 Destacado tinyint,
 Eliminado tinyint,
 Spam tinyint,
-CorreoReceptor varchar(100),
-index i_emisor (NombreEmisor),
-index i_correoEmisor (CorreoEmisor),
-index i_fecha (Fecha)
+CorreoReceptor varchar(100)
 );
 
+drop table correo;
 delete from correo;
 select * from correo;
 insert into correo(NombreEmisor,CorreoEmisor, Fecha, Asunto, Mensaje, Categoria, Leido, Destacado, Eliminado, Spam, CorreoReceptor) 
-value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,1,0,0,0,'receptor@gmail.com'),
-	('Javier Hernandez', 'Javier@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,0,1,0,0,'receptor@gmail.com'),
-    ('Messi Ronaldo', 'Messi@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,1,0,0,0,'receptor@gmail.com'),
-    ('Esperanza Callejas', 'Esperanza@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,1,0,0,0,'receptor@gmail.com'),
-    ('Jazmin Blanco', 'Jazmin@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,0,0,0,1,'receptor@gmail.com'),
-    ('Hector Hernandez', 'Hector@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,0,1,1,0,'receptor@gmail.com'),
-    ('Alejandro Castillo', 'Alejandro@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,0,0,1,0,'receptor@gmail.com'),
-    ('Kevin Messi', 'KevinMessi@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 1,0,0,0,0,'receptor@gmail.com');
+value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba1', 'Esto es una prueba 1', 0,1,0,0,0,'receptor@gmail.com'),
+	('Javier Hernandez', 'Javier@gmail.com', SYSDATE(), 'Prueba2', 'Esto es una prueba 2', 0,0,1,0,0,'receptor@gmail.com'),
+    ('Messi Ronaldo', 'Messi@gmail.com', SYSDATE(), 'Prueba3', 'Esto es una prueba 3', 0,1,0,0,0,'receptor@gmail.com'),
+    ('Esperanza Callejas', 'Esperanza@gmail.com', SYSDATE(), 'Prueba4', 'Esto es una prueba 4', 0,1,0,0,0,'receptor@gmail.com'),
+    ('Jazmin Blanco', 'Jazmin@gmail.com', SYSDATE(), 'Prueba5', 'Esto es una prueba 5', 0,0,0,0,1,'receptor@gmail.com'),
+    ('Hector Hernandez', 'Hector@gmail.com', SYSDATE(), 'Prueba6', 'Esto es una prueba 6', 0,0,1,1,0,'receptor@gmail.com'),
+    ('Alejandro Castillo', 'Alejandro@gmail.com', SYSDATE(), 'Prueba7', 'Esto es una prueba 7', 0,0,0,1,0,'receptor@gmail.com'),
+    ('Kevin Messi', 'KevinMessi@gmail.com', SYSDATE(), 'Prueba8', 'Esto es una prueba 8', 1,0,0,0,0,'receptor@gmail.com');
 
 delimiter //
 CREATE procedure InsertarNoLeidos()     

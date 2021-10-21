@@ -1,1 +1,17 @@
-<p>menu works!</p>
+<div class="container-fluid m-0 py-0 p-0 border" id="content">
+    <div class="row h-100">
+      <div class="col-lg-2 col-md-12 col-sm-12 h-100 border border-end ml-5 pr-5 row justify-content-center">
+        <div class="list-group list-group-flush mr-5">
+          <button class="btn border border-1 my-3 ml-4" id="btnredactar">Redactar</button>
+            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Correos" routerLinkActive="activo"><fa-icon [icon]="faEnvelope" class="mx-2"></fa-icon> Recibidos</a>
+            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Enviados" routerLinkActive="activo"><fa-icon [icon]="faPaperPlane" class="mx-2"></fa-icon> Enviados</a>
+            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Destacados" routerLinkActive="activo"><fa-icon [icon]="faStar" class="mx-2"></fa-icon> Destacados</a>
+            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Spam" routerLinkActive="activo"><fa-icon [icon]="faExclamationTriangle" class="mx-2"></fa-icon> Spam</a>
+            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Eliminados" routerLinkActive="activo"><fa-icon [icon]="faTrashAlt" class="mx-2"></fa-icon> Eliminados</a>
+        </div>
+      </div>
+      <div class="col-lg-10 col-md-12 col-sm-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
