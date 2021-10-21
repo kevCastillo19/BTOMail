@@ -1,4 +1,5 @@
-# 📧 Node Schedule
-The Node Schedule is a console application in which you can keep track of your tasks and activities
+# 📧 BTPmail
 
-To be completed...
+Una aplicacion web donde podras simular el envio de correos electronicos y manejo de tu propio Gmail
+
+    En proceso...
