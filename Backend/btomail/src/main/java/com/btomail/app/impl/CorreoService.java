@@ -74,18 +74,25 @@ public class CorreoService implements ICorreoService {
 
 	@Override
 	public CorreoResponse update(Correo correo) {
-		/*
-		 * CorreoResponse response = new CorreoResponse(); TblCorreo ent =
-		 * correoRepository.findByIdCorreo(correo.getIdCorreo());
-		 * 
-		 * if(ent != null) { response.setCodigoRespuesta(0);
-		 * response.setMensajeRespuesta("El libro ha sido actualizado");
-		 * 
-		 * }else { response.setCodigoRespuesta(1);
-		 * response.setMensajeRespuesta("El libro no existe"); }
-		 */
+		
+		  CorreoResponse response = new CorreoResponse();
+		  Optional<TblCorreo> correoId = correoRepository.findById(correo.getIdCorreo());
+		  if(correoId.isPresent()) { 
+			 TblCorreo ent = correoId.get();
+			 ent.setLeido(correo.getLeido());
+			 ent.setSpam(correo.getSpam());
+			 ent.setEliminado(correo.getEliminado());
+			 ent.setDestacado(correo.getDestacado());
+			 
+			 correoRepository.save(ent);
+		response.setCodigoRespuesta(0);
+		  response.setMensajeRespuesta("Peticion realizada");
+		  
+		  }else { response.setCodigoRespuesta(1);
+		  response.setMensajeRespuesta("El correo no existe"); }
+		 
 	
-		return null;
+		return response;
 	}
 	
 	//Metodos 

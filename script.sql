@@ -24,7 +24,7 @@ show indexes from correo;
 
 drop table correo;
 delete from correo;
-select * from correo order by IdCorreo desc;
+select * from correo;
 insert into correo(NombreEmisor,CorreoEmisor, Fecha, Asunto, Mensaje, Categoria, Leido, Destacado, Eliminado, Spam, CorreoReceptor) 
 value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba1', 'Esto es una prueba 1', 0,1,0,0,0,'receptor@gmail.com'),
 	('Javier Hernandez', 'Javier@gmail.com', SYSDATE(), 'Prueba2', 'Esto es una prueba 2', 0,0,1,0,0,'receptor@gmail.com'),
@@ -54,6 +54,7 @@ DECLARE i integer;
 END
 //delimiter ;
 
+drop procedure insertarNoLeidos;
 call insertarNoLeidos();
 
 delimiter //
@@ -64,15 +65,16 @@ DECLARE i integer;
   my_loop: LOOP
     SET i = i +1;
 		insert into correo(NombreEmisor,CorreoEmisor, Fecha, Asunto, Mensaje, Categoria, Leido, Destacado, Eliminado, Spam, CorreoReceptor) 
-        value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,1,1,0,0,'receptor@gmail.com');
+        value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba' , 0,0,1,0,0,'receptor@gmail.com');
 
-    IF  i =8000 THEN
+    IF  i =5000 THEN
      LEAVE my_loop;
     END IF;
  END LOOP my_loop;
 END
 //delimiter ;
 
+drop procedure Insertardestacados;
 call Insertardestacados();
 
 delimiter //
@@ -83,9 +85,8 @@ DECLARE i integer;
   my_loop: LOOP
     SET i = i +1;
 		insert into correo(NombreEmisor,CorreoEmisor, Fecha, Asunto, Mensaje, Categoria, Leido, Destacado, Eliminado, Spam, CorreoReceptor) 
-        value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,0,0,0,1,'receptor@gmail.com');
-
-    IF  i =10000 THEN
+        value('Kevin Castillo' , 'kevincastillo@gmail.com', SYSDATE(), 'Prueba' , 'Esto es una prueba' , 0,0,0,0,1,'receptor@gmail.com');
+    IF  i =5000 THEN
      LEAVE my_loop;
     END IF;
  END LOOP my_loop;
@@ -93,7 +94,6 @@ END
 //delimiter ;
 
 drop procedure Insertarspam;
-
 call Insertarspam();
 
 delimiter //
@@ -104,7 +104,7 @@ DECLARE i integer;
   my_loop: LOOP
     SET i = i +1;
 		insert into correo(NombreEmisor,CorreoEmisor, Fecha, Asunto, Mensaje, Categoria, Leido, Destacado, Eliminado, Spam, CorreoReceptor) 
-        value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 0,1,0,1,0,'receptor@gmail.com');
+        value('Kevin Castillo' , 'kevincastillo@gmail.com', SYSDATE(), 'Prueba' , 'Esto es una prueba' , 0,0,0,1,0,'receptor@gmail.com');
 
     IF  i =10000 THEN
      LEAVE my_loop;
@@ -113,6 +113,7 @@ DECLARE i integer;
 END
 //delimiter ;
 
+drop procedure Insertareliminados;
 call Insertareliminados();
 
 delimiter //
@@ -123,7 +124,7 @@ DECLARE i integer;
   my_loop: LOOP
     SET i = i +1;
 		insert into correo(NombreEmisor,CorreoEmisor, Fecha, Asunto, Mensaje, Categoria, Leido, Destacado, Eliminado, Spam, CorreoReceptor) 
-        value('Kevin Castillo', 'kevincastillo@gmail.com', SYSDATE(), 'Prueba', 'Esto es una prueba', 1,1,0,0,0,'receptor@gmail.com');
+        value('Kevin Castillo' , 'kevincastillo@gmail.com', SYSDATE(), 'Prueba' , 'Esto es una prueba' , 1,0,0,0,0,'receptor@gmail.com');
 
     IF  i =10000 THEN
      LEAVE my_loop;
@@ -132,6 +133,7 @@ DECLARE i integer;
 END
 //delimiter ;
 
+drop procedure Insertarenviados;
 call Insertarenviados();
 
 select count(*) from correo;

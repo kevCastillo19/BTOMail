@@ -35,16 +35,35 @@ export class CorreoService {
     return this.http.get<Correo[]>(`${this.url}/eliminado/1`);
   }
 
-  saveCorreo(obj: Correo): Observable<Correo>{
+  saveCorreo(obj: Correo){
     this.correo.nombreEmisor = obj.nombreEmisor;
     this.correo.correoEmisor = obj.correoEmisor;
     this.correo.asunto = obj.asunto;
     this.correo.mensaje = obj.mensaje;
     this.correo.correoReceptor = obj.correoReceptor;
     this.correo.categoria = true;
-
-    console.log(JSON.stringify(this.correo))
-
+    
     return this.http.post<Correo>(this.url+'/nuevo',this.correo);
+  }
+
+  updateCorreoDestacado(obj: Correo){
+    obj.destacado = !obj.destacado;
+    return this.http.put<Correo>(this.url+'/update',obj);
+  }
+
+  updateCorreoEliminado(obj: Correo){
+    obj.eliminado = !obj.eliminado;
+    return this.http.put<Correo>(this.url+'/update',obj);
+  }
+
+  updateCorreoLeido(obj: Correo){
+    obj.leido = !obj.leido;
+    console.log(obj)
+    return this.http.put<Correo>(this.url+'/update',obj);
+  }
+
+  updateCorreoSpam(obj: Correo){
+    obj.spam = !obj.spam;
+    return this.http.put<Correo>(this.url+'/update',obj);
   }
 }

@@ -5,16 +5,15 @@
     </div>
     <div class="row border-top" *ngFor="let eliminado of eliminados | paginate: { itemsPerPage: 13, currentPage: p }">
         <div class="col-lg-3 col-md-3 col-sm-12 d-flex flex-row align-items-center">
-            <fa-icon [icon]="faStar" class="mx-2" ></fa-icon>
-            <fa-icon [icon]="faExclamationTriangle" class="mx-2"></fa-icon>
-            <h3 class="m-3">{{eliminado.nombreEmisor}}</h3>
+            <h3 class="m-3" [ngClass]="{leido: eliminado.leido, noLeido: !eliminado.leido}">{{eliminado.nombreEmisor}}</h3>
         </div>
         <div class="col-lg-7 col-md-10 col-sm-12 d-flex flex-row align-items-center">
-            <h3 class="m-3 fw-normal">{{eliminado.asunto}}</h3> - <h3 class="m-3">{{eliminado.mensaje}}</h3>
+            <h3 class="m-3" [ngClass]="{leido: eliminado.leido, noLeido: !eliminado.leido}">{{eliminado.asunto}}</h3> - <h3 class="m-3">{{eliminado.mensaje}}</h3>
         </div>
         <div class="col-lg-2 col-md-12 col-sm-12 d-flex flex-row align-items-center">
             <h3 class="m-3">{{eliminado.fecha}}</h3>
-            <fa-icon [icon]="faEnvelopeOpen" class="mx-2"></fa-icon>
+            <fa-icon [icon]="faEnvelopeOpen" (click)="updateLeido(eliminado)" class="mx-2" *ngIf="eliminado.leido"></fa-icon>
+            <fa-icon [icon]="faEnvelope" (click)="updateLeido(eliminado)" class="mx-2" *ngIf="!eliminado.leido"></fa-icon>
         </div>
     </div>
 </div>

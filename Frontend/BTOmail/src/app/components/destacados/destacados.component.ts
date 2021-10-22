@@ -34,4 +34,32 @@ export class DestacadosComponent implements OnInit {
     })
   }
 
+  updateDestacado(obj: Correo){
+    this.correoService.updateCorreoDestacado(obj).subscribe(res => {
+      console.log(res);
+      this.getEnviados();
+    }, err => console.log(err))
+  }
+
+  updateEliminado(obj: Correo){
+    this.correoService.updateCorreoEliminado(obj).subscribe(res => {
+      console.log(res);
+      this.getEnviados();
+    }, err => console.log(err))
+  }
+
+  updateSpam(obj: Correo){
+    this.correoService.updateCorreoSpam(obj).subscribe(res => {
+      console.log(res);
+      this.getEnviados();
+    }, err => console.log(err))
+  }
+
+  updateLeido(obj: Correo){
+    this.correoService.updateCorreoLeido(obj).subscribe(res => {
+      console.log(res);
+      this.getEnviados();
+    }, err => console.log(err))
+  }
+
 }

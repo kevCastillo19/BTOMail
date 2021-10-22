@@ -33,4 +33,11 @@ export class EliminadosComponent implements OnInit {
     })
   }
 
+  updateLeido(obj: Correo){
+    this.correoService.updateCorreoLeido(obj).subscribe(res => {
+      console.log(res);
+      this.getEliminados();
+    }, err => console.log(err))
+  }
+
 }

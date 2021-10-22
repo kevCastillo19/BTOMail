@@ -8,6 +8,8 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  search:string = '';
+
   ngOnInit(): void {
   }
 
