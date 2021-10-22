@@ -1,5 +1,13 @@
 #content {
-    height: 100vh;
+    height: 93vh;
+}
+
+#modal {
+  position: fixed !important; 
+  bottom: 0 !important; 
+  right: 10px !important;
+  width: 750px;
+  background-color: #FFFFFF;
 }
 
 #btnredactar {
@@ -25,6 +33,14 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+#enviar {
+  border-radius: 16px;
+}
+
+#cerrarModal {
+  cursor: pointer;
+}
+
 #option {
     padding-left: 50px !important;
     margin-right: 15px;
@@ -43,3 +59,26 @@
     color: #DB3B30;
     font-weight: 500;
 }
+
+@media screen and (max-width: 1468px) {
+    #content {
+      height: auto;
+    }
+
+    #btnredactar {
+        font-size: 14px;
+        width: 128px;
+        margin: 15px 15px 15px 30px;
+    }
+  }
+
+@media screen and (max-width: 980px) {
+    #content {
+      height: auto;
+    }
+    #btnredactar {
+        font-size: 14px;
+        width: 128px;
+        margin: 15px 15px 15px 50px;
+    }
+  }

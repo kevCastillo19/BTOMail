@@ -1,3 +1,22 @@
-<div class="container m-5 p-5">
-    <h1>Aqui iran los spam</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-7"></div>
+        <div class="col-5 pt-3"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+    </div>
+    <div class="row border-top" *ngFor="let spam of spams | paginate: { itemsPerPage: 13, currentPage: p }">
+        <div class="col-lg-3 col-md-3 col-sm-12 d-flex flex-row align-items-center">
+            <fa-icon [icon]="faStar" class="mx-2" ></fa-icon>
+            <fa-icon [icon]="faExclamationTriangle" class="mx-2"></fa-icon>
+            <h3 class="m-3">{{spam.nombreEmisor}}</h3>
+        </div>
+        <div class="col-lg-7 col-md-10 col-sm-12 d-flex flex-row align-items-center">
+            <h3 class="m-3 fw-normal">{{spam.asunto}}</h3> - <h3 class="m-3">{{spam.mensaje}}</h3>
+        </div>
+        <div class="col-lg-2 col-md-12 col-sm-12 d-flex flex-row align-items-center">
+            <h3 class="m-3">{{spam.fecha}}</h3>
+            <fa-icon [icon]="faEnvelopeOpen" class="mx-2"></fa-icon>
+            <fa-icon [icon]="faTrashAlt" style="color: #DB3B30;" class="mx-2"></fa-icon>
+        </div>
+    </div>
 </div>
+

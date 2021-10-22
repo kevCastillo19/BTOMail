@@ -7,7 +7,7 @@ import com.btomail.app.dto.*;
 public interface ICorreoService {
 	
 	public List<Correo> findAll();
-		
+			
 	public List<Correo> findByCategoria(Boolean Categoria);
 	
 	public List<Correo> findByDestacado(Boolean Destacado);

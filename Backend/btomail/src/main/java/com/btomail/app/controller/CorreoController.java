@@ -12,6 +12,7 @@ import com.btomail.app.dto.*;
 import com.btomail.app.interfaz.*;
 
 @RestController
+@CrossOrigin
 public class CorreoController {
 	
 	@Autowired
@@ -47,8 +48,10 @@ public class CorreoController {
 		return listado;
 	}
 	
-	@PostMapping(value="/Correo/Nuevo", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public ResponseEntity<CorreoResponse> saveLibro(@RequestBody Correo correo) {
+	@PostMapping(value="/Correos/nuevo", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<CorreoResponse> saveCorreo(@RequestBody Correo correo) {
+		
+		System.out.print("Test");
 		
 		CorreoResponse response = correoService.save(correo);
 		
@@ -59,4 +62,15 @@ public class CorreoController {
 
 	}
 	
+	/*
+	 * @PutMapping(value="/Correos/update", produces =
+	 * {MediaType.APPLICATION_JSON_VALUE}) public ResponseEntity<CorreoResponse>
+	 * updateCorreo(@RequestBody Correo correo) {
+	 * 
+	 * CorreoResponse response = correoService.update(correo);
+	 * 
+	 * if(response.getCodigoRespuesta() == 0) return
+	 * ResponseEntity.status(HttpStatus.CREATED).body(response); else return
+	 * ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response); }
+	 */
 }

@@ -2,6 +2,7 @@ package com.btomail.app.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,9 +74,18 @@ public class CorreoService implements ICorreoService {
 
 	@Override
 	public CorreoResponse update(Correo correo) {
-		CorreoResponse response = new CorreoResponse();
+		/*
+		 * CorreoResponse response = new CorreoResponse(); TblCorreo ent =
+		 * correoRepository.findByIdCorreo(correo.getIdCorreo());
+		 * 
+		 * if(ent != null) { response.setCodigoRespuesta(0);
+		 * response.setMensajeRespuesta("El libro ha sido actualizado");
+		 * 
+		 * }else { response.setCodigoRespuesta(1);
+		 * response.setMensajeRespuesta("El libro no existe"); }
+		 */
 	
-		return response;
+		return null;
 	}
 	
 	//Metodos 
@@ -87,7 +97,6 @@ public class CorreoService implements ICorreoService {
 
 			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
 										ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
-			listadoCorreos.add(correo);
 		}
 
 		return listadoCorreos;
@@ -100,7 +109,8 @@ public class CorreoService implements ICorreoService {
 			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
 					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
 			
-			if(correo.getCategoria().equals(categoria)) {
+			if(correo.getCategoria().equals(categoria) && ent.getEliminado().equals(false) && ent.getSpam().equals(false)) {
+				
 				listadoCorreos.add(correo);
 			}
 		}
@@ -115,7 +125,7 @@ public class CorreoService implements ICorreoService {
 			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
 					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
 			
-			if(correo.getDestacado().equals(destacado)) {
+			if(correo.getDestacado().equals(destacado) && ent.getEliminado().equals(false) && ent.getSpam().equals(false)) {
 				listadoCorreos.add(correo);
 			}
 		}
@@ -130,7 +140,7 @@ public class CorreoService implements ICorreoService {
 			Correo correo = new Correo(ent.getIdCorreo(), ent.getNombreEmisor(), ent.getCorreoEmisor(), ent.getFecha(), ent.getAsunto(), ent.getMensaje(),
 					ent.getCategoria(), ent.getLeido(), ent.getDestacado(), ent.getEliminado(), ent.getSpam(), ent.getCorreoReceptor());
 			
-			if(correo.getSpam().equals(spam)) {
+			if(correo.getSpam().equals(spam) && ent.getEliminado().equals(false)) {
 				listadoCorreos.add(correo);
 			}
 		}

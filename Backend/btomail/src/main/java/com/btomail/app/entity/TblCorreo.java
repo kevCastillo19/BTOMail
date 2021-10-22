@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class TblCorreo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="IdCorreo", nullable=false)
 	private Integer IdCorreo;
 	@Column(name="NombreEmisor", nullable=false)
 	private String NombreEmisor;

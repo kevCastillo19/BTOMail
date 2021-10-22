@@ -7,6 +7,7 @@ import { SpamComponent } from './components/spam/spam.component';
 import { EliminadosComponent } from './components/eliminados/eliminados.component';
 
 const routes: Routes = [
+  { path: '', component: CorreosComponent},
   { path: 'Correos', component: CorreosComponent },
   { path: 'Enviados', component: EnviadosComponent },
   { path: 'Destacados', component: DestacadosComponent },

@@ -1,17 +1,81 @@
 <div class="container-fluid m-0 py-0 p-0 border" id="content">
-    <div class="row h-100">
-      <div class="col-lg-2 col-md-12 col-sm-12 h-100 border border-end ml-5 pr-5 row justify-content-center">
-        <div class="list-group list-group-flush mr-5">
-          <button class="btn border border-1 my-3 ml-4" id="btnredactar">Redactar</button>
-            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Correos" routerLinkActive="activo"><fa-icon [icon]="faEnvelope" class="mx-2"></fa-icon> Recibidos</a>
-            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Enviados" routerLinkActive="activo"><fa-icon [icon]="faPaperPlane" class="mx-2"></fa-icon> Enviados</a>
-            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Destacados" routerLinkActive="activo"><fa-icon [icon]="faStar" class="mx-2"></fa-icon> Destacados</a>
-            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Spam" routerLinkActive="activo"><fa-icon [icon]="faExclamationTriangle" class="mx-2"></fa-icon> Spam</a>
-            <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Eliminados" routerLinkActive="activo"><fa-icon [icon]="faTrashAlt" class="mx-2"></fa-icon> Eliminados</a>
-        </div>
-      </div>
-      <div class="col-lg-10 col-md-12 col-sm-12">
-        <router-outlet></router-outlet>
+  <div class="row h-100 m-0">
+    <div class="col-lg-2 col-md-12 col-sm-12 h-100 border border-end ml-5 pr-5 row justify-content-center">
+      <div class="list-group list-group-flush mr-5">
+        <button class="btn border border-1 my-3 ml-4"
+        (click)="abrirModal()" id="btnredactar">Redactar</button>
+        <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Correos"
+          routerLinkActive="activo">
+          <fa-icon [icon]="faEnvelope" class="mx-2"></fa-icon> Recibidos
+        </a>
+        <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Enviados"
+          routerLinkActive="activo">
+          <fa-icon [icon]="faPaperPlane" class="mx-2"></fa-icon> Enviados
+        </a>
+        <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Destacados"
+          routerLinkActive="activo">
+          <fa-icon [icon]="faStar" class="mx-2"></fa-icon> Destacados
+        </a>
+        <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Spam"
+          routerLinkActive="activo">
+          <fa-icon [icon]="faExclamationTriangle" class="mx-2"></fa-icon> Spam
+        </a>
+        <a id="option" class="list-group-item list-group-item-light px-3 border-0 pl-5" routerLink="/Eliminados"
+          routerLinkActive="activo">
+          <fa-icon [icon]="faTrashAlt" class="mx-2"></fa-icon> Eliminados
+        </a>
       </div>
     </div>
+    <div class="col-lg-10 col-md-12 col-sm-12">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+</div>
+
+<!-- Modal -->
+<div class="container border border-2 rounded-3" id="modal" *ngIf="modal">
+  <div class="row bg-dark text-white border border-2 border-dark pt-3 mb-3 rounded-3">
+    <div class="col-11">
+      <h4>Mensaje Nuevo</h4>
+    </div>
+    <div class="col-1 justify-content-end m-0">
+      <a id="cerrarModal" (click)="cerrarModal()">X</a>
+    </div>
+  </div>
+  <form action="" [formGroup]="correoNuevoFrm"> 
+  <div class="mb-3 mx-3 row bg-white">
+    <label for="nombreEmisor" class="col-sm-2 col-form-label">De: </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="nombreEmisor" aria-describedby="nombreEmisor">
+    </div>
+  </div>
+  <div class="mb-3 mx-3 row bg-white">
+    <label for="correoEmisor" class="col-sm-2 col-form-label">Correo: </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="correoEmisor" aria-describedby="correoEmisor">
+    </div>
+  </div>
+  <div class="mb-3 mx-3 row">
+    <label for="correoReceptor" class="col-sm-2 col-form-label">Para: </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="correoReceptor" aria-describedby="correoReceptor">
+    </div>
+  </div>
+  <div class="mb-3 mx-3 row">
+    <label for="asunto" class="col-sm-2 col-form-label">Asunto: </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" formControlName="asunto" aria-describedby="asunto">
+    </div>
+  </div>
+  <div class="mx-3 row">
+    <label for="mensaje" class="col-sm-2 col-form-label">Mensaje:</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" formControlName="mensaje" aria-describedby="mensaje" rows="5"></textarea>
+    </div>
+  </div>
+  <div class="row justify-content-end mx-2">
+    <button type="submit" [disabled]="!correoNuevoFrm.valid" (click)="agregarCorreo()" class="btn btn-danger w-25 m-4">Enviar</button>
+  </div>
+</form>
+</div>
+

@@ -12,6 +12,9 @@ import { EnviadosComponent } from './components/enviados/enviados.component';
 import { DestacadosComponent } from './components/destacados/destacados.component';
 import { SpamComponent } from './components/spam/spam.component';
 import { EliminadosComponent } from './components/eliminados/eliminados.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { EliminadosComponent } from './components/eliminados/eliminados.componen
     EnviadosComponent,
     DestacadosComponent,
     SpamComponent,
-    EliminadosComponent
+    EliminadosComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

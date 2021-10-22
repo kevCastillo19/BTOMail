@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faEnvelope, faPaperPlane, faStar, faExclamationTriangle, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-
+import { faEnvelope, faPaperPlane, faStar, faExclamationTriangle, faTrashAlt, faEnvelopeOpen } from "@fortawesome/free-solid-svg-icons";
+import { CorreoService } from 'src/app/services/correo.service';
+import { Correo } from '../../model/correo';
 @Component({
   selector: 'app-correos',
   templateUrl: './correos.component.html',
@@ -13,10 +14,24 @@ export class CorreosComponent implements OnInit {
   faStar = faStar; 
   faExclamationTriangle = faExclamationTriangle; 
   faTrashAlt = faTrashAlt;
+  faEnvelopeOpen = faEnvelopeOpen;
 
-  constructor() { }
+  p: number = 1;
+
+  recibidos: Correo[] = [];
+
+  constructor(private correoService: CorreoService) { }
 
   ngOnInit(): void {
+    this.getRecibidos();
   }
 
+  private getRecibidos(){
+    this.correoService.getRecibidos().subscribe(res => {
+      this.recibidos = res;
+    }, error => {
+      console.log(error);
+    })
+  }
+  
 }
